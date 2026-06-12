@@ -44,7 +44,7 @@ Ranking‑only models don't predict star ratings, so RMSE is not applicable.
 ├── requirements.txt                ← Python dependencies
 ├── problemStatement.pdf            ← the original challenge brief
 │
-├── 📓: kaggleV2(2.0).ipynb         ← Main notebook
+├── 📓: cult.ipynb         ← Main notebook
 │
 ├── 📄 Deliverables
 │   ├── Technical_Report.pdf          
