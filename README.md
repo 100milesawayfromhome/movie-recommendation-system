@@ -51,7 +51,7 @@ Ranking‑only models don't predict star ratings, so RMSE is not applicable.
 │   └── Presentation.pptx             
 │
 ├── 📈 Results & assets
-│   ├── v2_model_comparison (1).csv   final metrics from the full-data run
+│   ├── model_comparison.csv          final metrics from the full-data run
 │   └── report_assets/                generated charts (EDA, RMSE, MAP@10)
 
 ```
