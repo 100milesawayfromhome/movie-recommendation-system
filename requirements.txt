@@ -1,0 +1,18 @@
+# Core (required to run the notebook)
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.12
+numba>=0.58          # JIT-compiles the SGD training loops (Funk SVD / SVD++ / BPR)
+
+# Notebook tooling
+nbformat>=5.9
+ipykernel>=6.0
+
+# Report & slide generation (optional — only for rebuilding the PDFs)
+reportlab>=4.0
+pillow>=10.0
+
+# On Kaggle, every package above is already preinstalled — no setup needed.
