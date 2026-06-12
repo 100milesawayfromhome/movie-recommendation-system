@@ -8,7 +8,7 @@ hybrid ranker delivers the strongest **MAP@10**. Seven models are implemented an
 the full dataset.
 
 <p align="center">
-  <em>Collaborative Filtering · Matrix Factorization · SVD++ · BPR · Stacked Ensemble · Hybrid Ranker</em>
+  
 </p>
 
 ---
@@ -44,28 +44,16 @@ Ranking‑only models don't predict star ratings, so RMSE is not applicable.
 ├── requirements.txt                ← Python dependencies
 ├── problemStatement.pdf            ← the original challenge brief
 │
-├── 📓 Notebooks
-│   ├── netflix_recommender_v2.ipynb   ★ MAIN — clean, documented, Kaggle-ready (7 models)
-│   ├── kaggleV2(2.0).ipynb            full 100M-rating executed run (with outputs)
-│   └── netflix_recommender.ipynb      v1 — initial baseline approach (kept for reference)
+├── 📓: kaggleV2(2.0).ipynb         ← Main notebook
 │
 ├── 📄 Deliverables
-│   ├── Technical_Report.pdf          5-page technical report
-│   ├── Presentation.pdf              8-slide deck (PDF)
-│   └── Presentation.pptx             8-slide deck (editable PowerPoint)
+│   ├── Technical_Report.pdf          
+│   └── Presentation.pptx             
 │
 ├── 📈 Results & assets
 │   ├── v2_model_comparison (1).csv   final metrics from the full-data run
 │   └── report_assets/                generated charts (EDA, RMSE, MAP@10)
-│
-├── 🛠️ Figure/report generators (reproduce the PDFs)
-│   ├── _make_charts.py   ·  _make_eda.py
-│   ├── _make_report.py   ·  _make_slides.py
-│
-└── archive/                        ← dataset (NOT committed — see Setup)
-    ├── combined_data_1..4.txt
-    ├── movie_titles.csv
-    ├── probe.txt  ·  qualifying.txt
+
 ```
 
 ---
@@ -140,7 +128,7 @@ All knobs live in the **config cell** near the top of the notebook:
 
 All three SGD models are **numba‑JIT‑compiled**, so a full epoch over 99M ratings runs in under a minute.
 
-### Evaluation (honest by design)
+### Evaluation 
 - **Test set:** the dataset's own `probe.txt`, removed from training via an anti‑join (no leakage).
 - **Blend split:** test is further divided into a **25% slice** (used *only* to learn ensemble weights) and a
   disjoint **75% slice** — **every reported number comes from the 75% slice**, so the learned ensemble can't
@@ -164,51 +152,15 @@ USER 963054 — rated highly: Batman Begins (5), Pirates of the Caribbean (4), I
 
 A coherent **action‑adventure** cluster and a clean **rom‑com** cluster emerge with zero metadata.
 
----
 
-## 📦 Reproducing the Deliverables
 
-The report and slides are generated programmatically from the results CSV and cached data:
-
-```bash
-python _make_eda.py        # EDA figure from ratings_full.pkl
-python _make_charts.py     # RMSE + MAP@10 charts from the metrics CSV
-python _make_report.py     # → Technical_Report.pdf
-python _make_slides.py     # → Presentation.pdf
-```
-
----
-
-## ✅ Mandatory Tasks — Coverage Map
-
-| Task (from brief) | Where |
-|-------------------|-------|
-| **A. Exploratory Data Analysis** | Notebook §3 · Report §1 |
-| **B. Recommendation Model Development** | Notebook §4–8 (5+ models) |
-| **C. Model Comparison** | Notebook §9 · Report §5 scoreboard |
-| **D. Recommendation Generation (Top‑K)** | Notebook §10 + explanations |
-| **E. Evaluation (RMSE + MAP@10)** | Notebook §9 · Report §3 methodology |
-| *Optional:* Explainable recs · Cold‑start | Notebook §11–12 |
-
----
-
-## 🔭 Future Improvements
-
-- **timeSVD++** — model the temporal drift visible in the EDA (the winners' largest remaining lever).
-- **Richer ensemble** — fold a kNN neighbourhood model and an RBM into the same stacking framework.
-- **Diversity‑aware re‑ranking** — top rankers concentrate on popular titles (low coverage); re‑rank for novelty.
-- **GPU scale‑up** — port BPR/ALS to `implicit` / `lightfm` for faster iteration.
-
----
 
 ## 📚 Dataset & Acknowledgements
 
 - **Netflix Prize Dataset** — 100,480,507 ratings · 480,189 users · 17,770 movies (1998–2005).
   [kaggle.com/datasets/netflix-inc/netflix-prize-data](https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data)
-- Per the dataset licence, it is **not redistributed** here — download it from Kaggle (see Setup).
+
 
 ---
 
-<p align="center"><sub>
-Built as a complete ML‑engineering deliverable: data pipeline · model training · evaluation · recommendation generation · report & slides. Reproducible from a single notebook.
-</sub></p>
+
